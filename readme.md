@@ -7,7 +7,7 @@ Using Collaborative-filtering and Content-based recommending system, we will nee
 ### Data Collection:
 
 #### 1. User Data:
-Collect comprehensive details about your users to understand their preferences and behaviors.
+Collect comprehensive details about our users to understand their preferences and behaviors.
 
 - **Demographics**: 
   - `Age`
@@ -35,13 +35,14 @@ Collect comprehensive details about your users to understand their preferences a
   - `Return History`
 
 #### 2. Item Data:
-Details about the products or services to understand their attributes and categories.
+Details about the products or services to understand their attributes and categories. 
 
 - **Basic Information**:
   - `Item ID`
   - `Name/Title`
   - `Description`
   - `Price`
+  - `Image`
 
 - **Categorical Information**:
   - `Category`
@@ -115,6 +116,64 @@ Serving Layer:
 
 Access & Query: Use tools like Amazon Athena or Redshift Spectrum to directly query and analyze the enriched data in S3. This is where the combined insights from both batch and stream data can be made available to business users, analysts, or other applications.
 
-#### Feedback Loop:
+## Data Cleaning and Feature 
+
+
+## Model building
+
+### Hybrid Recommendation System:
+Content-based Filtering:
+
+Uses features of items (like tags, categories, or descriptions) to find similarities and recommend items similar to what the user has previously interacted with.
+Implementation:
+Extract features from items using techniques like TF-IDF or word embeddings.
+Use cosine similarity or other distance metrics to find the similarity between items based on these features.
+Collaborative Filtering:
+
+Predicts user preferences based on past behaviors of similar users.
+Implementation:
+Utilize matrix factorization techniques such as Singular Value Decomposition (SVD) or Alternating Least Squares (ALS).
+Knowledge-based Algorithm:
+
+Taps into explicit knowledge about users and items.
+Implementation:
+Capture explicit user preferences through user profiles or questionnaires.
+Use this knowledge to filter and rank items based on a set of predefined rules.
+Constructing the Neural Network for the Hybrid Model:
+Input Layer: This will contain neurons representing:
+
+Features from the content-based model (item embeddings, item metadata).
+Features from the collaborative filtering model (user and item embeddings).
+Features from the knowledge-based model (explicit user preferences or rules).
+Hidden Layers: Multiple dense layers can be used to capture intricate patterns and interactions between the different recommendation methods.
+
+Output Layer: Represents the likelihood of a user interacting with an item. This could be in the form of scores or probabilities.
+
+
+## Model deployment 
+
+1. Model Registry:
+we will catalog and manage versions of our models.
+Register our models, assign them versions, and store metadata about them.
+Easily roll back to previous versions if necessary.
+
+2. Deployment:
+Amazon SageMaker Endpoints: we will deploy our trained model to a SageMaker real-time endpoint.
+Ensure that autoscaling set up to handle varying loads.
+
+3. A/B Testing:
+SageMaker allows us to perform A/B testing by deploying multiple models to an endpoint.
+Define multiple variants of models. E.g., Variant A uses an older model while Variant B uses the newly trained model.
+Allocate a percentage of traffic to each variant. E.g., 90% to Variant A and 10% to Variant B.
+Monitor performance metrics for each variant using Amazon CloudWatch.
+
+4. Continuous Integration and Continuous Deployment (CI/CD):
+AWS CodePipeline & AWS CodeBuild: Set up a CI/CD pipeline.
+Automate model training, evaluation, and deployment when changes are made or new data becomes available.
+Incorporate quality gates to ensure only models that meet certain criteria (like a specific accuracy threshold) are deployed.
+
+
+
+## Feedback Loop:
 
 As we generate recommendations or insights based on the combined data, we may also want to introduce a feedback mechanism. For instance, users' reactions to recommendations can be captured in real-time, fed back into the system, and used to refine future recommendations.
