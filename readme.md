@@ -1,6 +1,91 @@
 # Recommendation System for shopping website
 
+## Data we need for the system.
 
+Using Collaborative-filtering and Content-based recommending system, we will need the following atrribute. 
+
+### Data Collection:
+
+#### 1. User Data:
+Collect comprehensive details about your users to understand their preferences and behaviors.
+
+- **Demographics**: 
+  - `Age`
+  - `Gender`
+  - `Location`
+  - `Occupation`
+  - `Education Level`
+
+- **User Behavior**:
+  - `Browsing History`
+  - `Search Queries`
+  - `Time Spent on Site`
+  - `Frequency of Visits`
+
+- **User Preferences**:
+  - `Product Categories Frequently Browsed`
+  - `Wish Lists`
+  - `Alerts & Notifications Set`
+  - `Feedback and Reviews Given`
+
+- **Purchase History**:
+  - `Items Purchased`
+  - `Frequency of Purchases`
+  - `Average Purchase Value`
+  - `Return History`
+
+#### 2. Item Data:
+Details about the products or services to understand their attributes and categories.
+
+- **Basic Information**:
+  - `Item ID`
+  - `Name/Title`
+  - `Description`
+  - `Price`
+
+- **Categorical Information**:
+  - `Category`
+  - `Sub-Category`
+  - `Brand`
+  - `Manufacturer`
+
+- **Item Attributes**:
+  - `Color`
+  - `Size`
+  - `Material`
+  - `Usage Instructions`
+  - `Warranty Details`
+
+- **Item Ratings and Reviews**:
+  - `Average Rating`
+  - `Number of Reviews`
+  - `Positive/Negative Review Count`
+
+#### 3. User-Item Interaction Data:
+Insights into how users interact with specific items, which are critical for building effective recommendation systems.
+
+- **Browsing Data**:
+  - `Items Viewed`
+  - `Duration of View`
+  - `Sequence of Items Browsed`
+
+- **Engagement Data**:
+  - `Items Added to Cart`
+  - `Items Removed from Cart`
+  - `Items Added to Wish List`
+  - `Items Shared on Social Media`
+
+- **Purchase Data**:
+  - `Items Purchased Together`
+  - `Time of Purchase (Seasonality)`
+  - `Purchase Method (Online, In-Store, Mobile)`
+
+- **Feedback Data**:
+  - `User Ratings for Items`
+  - `User Reviews`
+  - `Items Marked as "Not Interested"`
+
+ 
 ## Data Source 
 
 While the user is browsing the website, we 
